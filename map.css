@@ -14,3 +14,53 @@ html, body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for effect */
     border-radius: 8px; /* Optional: rounded corners */
   }
+
+  #map svg {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /*background: yellow;
+    opacity: 50%;*/
+  }
+
+  #map svg circle {
+    pointer-events: auto;
+    --color-departures: steelblue;
+    --color-arrivals: darkorange;
+    --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(var(--departure-ratio) * 100%),
+    var(--color-arrivals) 
+    );
+    fill: var(--color);
+  }
+
+  .legend > div {
+    --color-departures: steelblue;
+    --color-arrivals: darkorange;
+    --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(var(--departure-ratio) * 100%),
+    var(--color-arrivals) 
+    );
+    background-color: var(--color);
+    flex: 1;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+  }
+
+  .legend {
+    display: flex;
+    width: 100%;
+    gap: 1px;
+    margin-block: 10px;
+    justify-content: center;
+    align-items: center;
+  }
